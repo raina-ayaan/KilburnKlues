@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kilburn Klues</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async></script>
+
+    <!-- React + Babel via CDN (no npm / Node needed) -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+    <!-- ── Navigation ───────────────────────────────────────────────── -->
+    <header class="nav">
+        <a class="nav-logo" href="#">
+            <span class="nav-logo-dot"></span>
+            Kilburn Klues
+        </a>
+        <div class="nav-right">
+            <button id="theme-toggle" class="nav-btn theme-btn">🌙</button>
+            <span id="score-badge" class="score-badge" style="display:none;"></span>
+            <div class="user-menu" id="user-menu">
+                <button id="user-menu-toggle" class="nav-btn">
+                    Account <span style="opacity:0.5;">▾</span>
+                </button>
+                <div id="user-dropdown" class="user-dropdown" style="display:none;">
+                    <a class="dropdown-item" href="templates/past_scores.html" id="past-scores-link" style="display:none;">Past Scores</a>
+                    <a class="dropdown-item" href="templates/other_buildings.html">Coming Soon</a>
+                    <div class="dropdown-divider"></div>
+                    <button id="auth-btn" class="dropdown-item">Sign In</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ── Hero — full-bleed building photo with split panels ───────── -->
+    <section class="hero-split">
+
+        <!-- Background: Kilburn Building photo -->
+        <div class="hero-bg">
+            <img src="kilburn_building.jpg" alt="Kilburn Building" class="hero-bg-img">
+            <div class="hero-bg-overlay"></div>
+        </div>
+
+        <!-- Top centre: title over the photo -->
+        <div class="hero-title-wrap">
+            <div class="hero-eyebrow">
+                <span class="hero-eyebrow-dot"></span>
+                University of Manchester · CS Building
+            </div>
+            <h1 class="hero-title">
+                Lost? Here's a <span class="hero-title-accent">Kilburn Klue</span>
+            </h1>
+            <p class="hero-sub">
+                Explore the building, test your knowledge, and discover the history
+                behind Manchester's home of Computer Science.
+            </p>
+            <button id="hero-sign-in" class="btn-ghost">Sign In with Google</button>
+        </div>
+
+        <!-- Bottom: two choice panels -->
+        <div class="hero-panels">
+            <a class="hero-panel" href="templates/guide_home.html">
+                <div class="hero-panel-inner">
+                    <div class="hero-panel-icon">🖼️</div>
+                    <h2 class="hero-panel-title">Explore the Guide</h2>
+                    <p class="hero-panel-desc">
+                        Take your time to learn and ponder. Enjoy the history and intricacies
+                        of the Kilburn Building.
+                    </p>
+                    <span class="hero-panel-btn">Explore →</span>
+                </div>
+            </a>
+
+            <div class="hero-panel-divider"></div>
+
+            <a class="hero-panel" href="templates/game.html">
+                <div class="hero-panel-inner">
+                    <div class="hero-panel-icon">🧩</div>
+                    <h2 class="hero-panel-title">Test Your Luck</h2>
+                    <p class="hero-panel-desc">
+                        Do you have what it takes to take on our quiz?
+                        To answer our questions?
+                    </p>
+                    <span class="hero-panel-btn">Start Game →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ── Stats strip ───────────────────────────────────────────────── -->
+    <div class="stats-strip">
+        <div class="stat-item">
+            <div class="stat-num">200+</div>
+            <div class="stat-label">Photo locations</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">1948</div>
+            <div class="stat-label">Year Baby ran</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">100+</div>
+            <div class="stat-label">Questions (More coming soon!)</div>
+        </div>
+    </div>
+
+    
+    <!-- ── Footer ───────────────────────────────────────────────────── -->
+    <footer class="footer">
+        <span class="footer-brand">Kilburn Klues</span>
+        <span class="footer-text">X16 · The University of Manchester · 2025</span>
+    </footer>
+
+    <!-- ── React: nav island + scroll animations ─────────────────────── -->
+    <div id="react-modal-root"></div>
+    <script type="text/babel" src="index.jsx"></script>
+
+    <section class="leaderboard-section" aria-labelledby="leaderboard-heading">
+        <h2 id="leaderboard-heading">Global Leaderboard</h2>
+        <p class="leaderboard-subtitle">Top 10 players by total score</p>
+
+        <div class="leaderboard-card">
+            <table class="leaderboard-table" aria-label="Top 10 players">
+                <thead>
+                    <tr>
+                        <th scope="col">Player</th>
+                        <th scope="col">Lifetime Score</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <tr>
+                        <td colspan="2" class="leaderboard-empty">Loading leaderboard...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+<script src="static/scores.js"></script>
+</body>
+</html>
