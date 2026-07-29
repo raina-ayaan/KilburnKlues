@@ -212,29 +212,7 @@ All main operations use `/api.php?action=<action>`.
 
 On the University of Manchester CS web server, static files are served directly and PHP handles the API. `api.php` and `guide_images.php` expect a server-generated `config.inc.php` containing the database credentials and `$group_dbnames` array.
 
-Do not commit `config.inc.php`, `.env`, or any database credentials.
 
-## Current limitations and security notes
-
-- Several front-end files linked by `index.html` are not present in the repository.
-- There is no checked-in database schema, seed data, dependency lockfile, or automated test suite.
-- The Flask secret key is regenerated on every start, invalidating existing local sessions after a restart.
-- Google credentials are decoded in the browser, but the ID token is not verified by either back end.
-- Score submission trusts the client-provided Google ID and score; it should be validated server-side before public deployment.
-- The tag-sync action is publicly reachable and mutates database records.
-- The leaderboard response currently inserts a hard-coded development entry before real players.
-- The catch-all Flask file route should be reviewed before exposing the development server publicly.
-
-## Suggested next steps
-
-- Restore or add the missing guide, game, results, score-history, and leaderboard assets.
-- Add a reproducible SQL schema and sample data.
-- Add `requirements.txt` and `.env.example`.
-- Move the Flask secret key into environment configuration.
-- Verify Google ID tokens on the server and authorise score updates.
-- Restrict administrative actions such as tag syncing.
-- Add tests for both back ends to keep their API responses in sync.
-- Remove development-only leaderboard data.
 
 ## Team
 
