@@ -216,7 +216,7 @@ On the University of Manchester CS web server, static files are served directly 
 
 ## Team
 
-Built by **KilburnDevGroup (X16)** at the University of Manchester as a playful way to explore and learn the Kilburn Building.
+Built by **KilburnDevGroup (Group X16 2025-26)** at the University of Manchester as a playful way to explore and learn the Kilburn Building.
 
 ## License
 
